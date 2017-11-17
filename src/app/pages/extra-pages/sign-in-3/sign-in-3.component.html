@@ -1,0 +1,39 @@
+<card [title]="'Sign in with your app id to continue'" [align]="'center'">
+  <form (ngSubmit)="onSubmit()">
+    <md-input-container>
+      <input mdInput placeholder="Username" value="">
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput placeholder="Password" value="">
+    </md-input-container>
+
+    <div class="text-left mb-module">
+      <md-checkbox>
+        Keep me signed in
+      </md-checkbox>
+    </div>
+
+    <button md-raised-button color="primary" type="submit" class="submit">Sign In</button>
+
+    <div class="social-divider">Sign in with</div>
+
+    <div class="social-login">
+      <!-- Botton De Facebook -->
+      <!-- <button md-raised-button type="button" class="bg-facebook text-white"><i class="fa fa-facebook"></i> Facebook</button> -->
+      <!-- Botton Rojo De Google de twitter anteriormente -->
+      <!-- <button md-raised-button type="button" class="bg-google text-white"><i class="fa fa-google"></i> Google</button> -->
+      <!-- <google-signin>Google</google-sign-in> -->
+      <!-- Boton oficial de Google -->
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      <!-- Boton de Google sacada de una pagina -->
+      <!-- <google-signin></google-signin> -->
+    </div>
+
+    <div class="additional-info">
+      <a href="extra-layout/sign-up">Sign up</a>
+      <span class="divider"></span>
+      <a href="extra-layout/forgot">Forgot your password?</a>
+    </div>
+  </form>
+</card>
