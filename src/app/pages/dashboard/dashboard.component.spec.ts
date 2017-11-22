@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PageDashboardComponent } from './dashboard.component';
 
+import { EnviosComponent} from '../../envios/envios.component';
+
 describe('PageDashboardComponent', () => {
   let component: PageDashboardComponent;
   let fixture: ComponentFixture<PageDashboardComponent>;

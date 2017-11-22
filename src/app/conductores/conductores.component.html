@@ -1,0 +1,78 @@
+<script type="text/javascript">
+  function callme(){
+    var table = tableToJson($('#Envios-Tabla').get(0));
+    var doc = new jsPDF('1','pt', 'letter', true);
+  
+    console.log(Envios-Tabla);
+    doc.cellInitialize();
+    $.each(table,function(i,row){
+      $.each(row,function(j, cell){
+        if(j == "Sucursal Inicial"){
+          doc.cell(1,10,190,20,cell,i);
+        }
+        else{
+          doc.cell(1,10,90,20,cell,i);
+        }
+      });
+    });
+  
+    doc.save('test2.pdf');
+  }
+  
+  function tableToJson(table){
+    //first we need to be headers
+    var headers = [];
+    for( var i = 0; i <table.rows[0].cells.lenght;i++){
+      headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi,'');
+    }
+    data.push(headers);
+    for(var i = 1; i < table.rows.lenght; i++){
+      var tableRow = table.rows[i];
+      var rowData = {};
+  
+      for (var j = 0 ; j<tableRow.cells.lenght; j++){
+        rowData[ headers[j] ] = tableRow.cells[j].innerHTML;
+      }
+      data.push(rowData);
+    }
+    return data;
+  }
+ </script>
+  
+<card title="conductores">
+  <div class="table-responsive">
+    <table class="table" id = "Empleados-Tabla">
+      <thead class="thead-inverse">
+      <tr>
+        <th>id</th>
+        <th>Nombre Completo</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let conductor of conductores">
+          <th scope="row">{{conductor._id}}</th>
+          <td>{{conductor.nombre}}</td>
+          <input type="button" (click)="deletConductor(conductor._id)" value="Delete" class = "btn btn-danger">
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <a href="javascript:callme();">Call me</a>
+</card>
+  
+<button type="button" (click)="back()">Back</button>
+  
+<div class="container">
+  <h3 class = "page-header">Registrar conductor</h3>
+  <form (submit) = "addConductor()">
+    <div class = "form-group">
+      <label>Nombre Completo</label>
+      <input type="text"[(ngModel)] = "nombre" name = "nombre" class = "form-control">
+    </div>
+    <input type="submit" class="btn btn btn-success" value = "Add">
+  </form>
+</div>
+<hr>
+
+<script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+<script type="text/javascript" src="js/jspdf.js"></script>

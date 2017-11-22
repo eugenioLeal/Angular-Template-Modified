@@ -1,9 +1,21 @@
-import { BrowserModule }                    from '@angular/platform-browser';
-import { RouterModule }                     from '@angular/router';
-import { NgModule }                         from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule, Http }                 from '@angular/http';
-import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
+import { HttpModule, Http } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ContactsComponent } from './contacts/contacts.component';
+import { ContactService } from './contact.service';
+import { EnviosComponent } from './envios/envios.component';
+import { EnvioService } from './envio.service';
+import { ConductoresComponent } from './conductores/conductores.component';
+import { EmpleadosComponent } from './empleados/empleados.component';
+import { FacturasComponent } from './facturas/facturas.component';
+import { PaquetesComponent } from './paquetes/paquetes.component';
+import { SucursalesComponent } from './sucursales/sucursales.component';
+import { TransportesComponent } from './transportes/transportes.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 import {
   MdAutocompleteModule,
@@ -138,6 +150,7 @@ import { AdditionNavbarComponent }          from './a2-components/addition-navba
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     ReactiveFormsModule,
     MdAutocompleteModule,
     MdButtonModule,
@@ -182,6 +195,15 @@ import { AdditionNavbarComponent }          from './a2-components/addition-navba
   ],
   declarations : [
     AppComponent,
+    ContactsComponent,
+    EnviosComponent,
+    ConductoresComponent,
+    EmpleadosComponent,
+    FacturasComponent,
+    PaquetesComponent,
+    SucursalesComponent,
+    TransportesComponent,
+    UsuariosComponent,
     GoogleSigninComponent,
     DefaultLayoutComponent,
     ExtraLayoutComponent,

@@ -13,23 +13,48 @@ export const MAINMENUITEMS: MainMenuItem[] = [
     budgeColor: ''
   },
   {
-    title: 'Dashboards',
+    title: 'Pages',
     icon: 'fa fa-home',
     active: false,
     groupTitle: false,
     sub: [
       {
-        title: 'Dashboard 1',
-        routing: '/default-layout/dashboard'
+        title: 'Envios',
+        routing: '/default-layout/envios'
       },
       {
-        title: 'Dashboard 2',
-        routing: '/default-layout/dashboard-2'
+        title: 'Usuarios',
+        routing: '/default-layout/usuarios'
+      },
+      {
+        title: 'Empleados',
+        routing: '/default-layout/empleados'
+      },
+      {
+        title: 'Paquetes',
+        routing: '/default-layout/paquetes'
+      },
+      {
+        title: 'Sucursales',
+        routing: '/default-layout/sucursales'
+      },
+      {
+        title: 'Transportes',
+        routing: '/default-layout/transportes'
+      },
+      {
+        title: 'Conductores',
+        routing: '/default-layout/conductores'
+      },
+      {
+        title: 'Facturas',
+        routing: '/default-layout/facturas'
       }
+
     ],
     routing: '/default-layout/dashboard',
     externalLink: '',
-    budge: '2',
+    budge: '8',
     budgeColor: '#f44236'
   },
   {

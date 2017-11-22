@@ -67,8 +67,24 @@ import { PageFormValidationComponent }  from './pages/forms/form-validation/form
 import { PageGoogleMapComponent }       from './pages/maps/google-map/google-map.component';
 import { PageLeafletMapComponent }      from './pages/maps/leaflet-map/leaflet-map.component';
 import { PageWidgetsComponent }         from './pages/widgets/widgets.component';
+import { EnviosComponent}               from './envios/envios.component';
+import { ConductoresComponent }         from './conductores/conductores.component';
+import { EmpleadosComponent }           from './empleados/empleados.component';
+import { FacturasComponent }            from './facturas/facturas.component';
+import { PaquetesComponent }            from './paquetes/paquetes.component';
+import { SucursalesComponent }          from './sucursales/sucursales.component';
+import { TransportesComponent }         from './transportes/transportes.component';
+import { UsuariosComponent }            from './usuarios/usuarios.component';
 
 const defaultRoutes: Routes = [
+  { path: 'envios', component: EnviosComponent },
+  { path: 'conductores', component: ConductoresComponent},
+  { path: 'empleados', component: EmpleadosComponent},
+  { path: 'facturas', component: FacturasComponent},
+  { path: 'paquetes', component: PaquetesComponent},
+  { path: 'sucursales', component: SucursalesComponent},
+  { path: 'transportes', component: TransportesComponent},
+  { path: 'usuarios', component: UsuariosComponent},
   { path: 'dashboard', component: PageDashboardComponent },
   { path: 'dashboard-2', component: PageDashboard2Component },
   { path: 'typography', component: PageTypographyComponent },

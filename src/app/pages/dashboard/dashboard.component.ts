@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../layouts/shared-service';
+import { EnvioService } from '../../envio.service';
+import { Envio } from '../../contact';
+import {EnviosComponent} from '../../envios/envios.component';
+import { directiveDef } from '@angular/core/src/view/provider';
+import { Router} from '@angular/router';
 
 const messages: any[] = [
   {
@@ -82,18 +87,56 @@ const folders: any[] = [
   moduleId: module.id,
   selector: 'page-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+
 })
+
+
 export class PageDashboardComponent {
   pageTitle: string = 'Dashboard';
   messages = messages;
   folders = folders;
 
-  constructor( private _sharedService: SharedService ) {
+  constructor( private _sharedService: SharedService, private router: Router ) {
     this._sharedService.emitChange(this.pageTitle);
   }
 
+  direvtives:[EnviosComponent];
+
   ngOnInit() {}
+
+  envios(){
+    this.router.navigate(['/default-layout/envios']);
+    console.log("Navegando a envios");
+  }
+  usuarios(){
+    this.router.navigate(['/default-layout/usuarios']);
+    console.log("Navegando a usuarios");
+  }
+  empleados(){
+    this.router.navigate(['/default-layout/empleados']);
+    console.log("Navegando a empleados");
+  }
+  paquetes(){
+    this.router.navigate(['/default-layout/paquetes']);
+    console.log("Navegando a paquetes");
+  }
+  sucursales(){
+    this.router.navigate(['/default-layout/sucursales']);
+    console.log("Navegando a sucursales");
+  }
+  conductores(){
+    this.router.navigate(['/default-layout/conductores']);
+    console.log("Navegando a conductores");
+  }
+  transportes(){
+    this.router.navigate(['/default-layout/transportes']);
+    console.log("Navegando a transportes");
+  }
+  facturas(){
+    this.router.navigate(['/default-layout/facturas']);
+    console.log("Navegando a facturas");
+  }
 
   // lineChart
   public lineChartData: any[] = [
