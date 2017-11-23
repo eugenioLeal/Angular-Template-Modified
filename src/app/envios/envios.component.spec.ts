@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EnviosComponent } from './envios.component';
 
+import { PageFilteringTableComponent } from './../pages/tables/filtering-table/filtering-table.component';
+
 describe('EnviosComponent', () => {
   let component: EnviosComponent;
   let fixture: ComponentFixture<EnviosComponent>;

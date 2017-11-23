@@ -15,7 +15,7 @@ export class Envio{
     factura: string; 
     conductor: string; 
     transporte: string; 
-    fecha: Date;
+    fecha: string;
 }
 
 export class Paquete{
@@ -59,9 +59,9 @@ export class Transporte{
 
 export class Factura{
     _id?: string; 
-    precio: string; 
+    precio: number; 
     direccion_dest: string; 
     nombre_usuario_dest: string; 
-    fecha: Date; 
+    fecha: string; 
 }
 

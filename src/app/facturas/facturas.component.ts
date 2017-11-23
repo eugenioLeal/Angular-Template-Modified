@@ -15,10 +15,11 @@ import { Router } from '@angular/router';
 export class FacturasComponent implements OnInit {
   facturas: Factura[];
   factura: Factura;   
-  precio: string;
+  precio: number;
   direccion_dest: string;
   nombre_usuario_dest: string; 
-  fecha: Date;
+  paquete: string;
+  fecha: string;
 
 
   constructor(private facturaService: FacturaService, private router: Router) { }
@@ -29,6 +30,7 @@ export class FacturasComponent implements OnInit {
       precio: this.precio, 
       direccion_dest: this.direccion_dest,
       nombre_usuario_dest: this.nombre_usuario_dest, 
+      paquete: this.paquete,
       fecha: this.fecha
     }
     
@@ -54,6 +56,37 @@ export class FacturasComponent implements OnInit {
          }
       }
     })
+  }
+
+  exportTableToCSV(filename){
+    var csv = [];
+    var rows = document.querySelectorAll("table tr"); 
+
+    for (var i = 0; i < rows.length; i++){
+      var row = [], cols = rows[i].querySelectorAll("td, th");
+      for (var j = 0; j < cols.length; j++){
+        row.push(cols[j].textContent);
+       
+      }
+      csv.push(row.join(","));
+    }
+
+    //download csv file
+
+    var csvFile;
+    var downloadLink;
+
+    csvFile = new Blob([csv.join("\n")],{type:"text/csv"});
+
+    downloadLink = document.createElement("a");
+    downloadLink.download = filename;
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+    downloadLink.style.display = "none";
+
+    document.body.appendChild(downloadLink);
+
+    downloadLink.click();
+    
   }
 
   ngOnInit() {

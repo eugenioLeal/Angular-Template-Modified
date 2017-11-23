@@ -1,43 +1,6 @@
-<script type="text/javascript">
-function callme(){
-  var table = tableToJson($('#Envios-Tabla').get(0));
-  var doc = new jsPDF('1','pt', 'letter', true);
+<!DOCTYPE html>
+<html>
 
-  console.log(Envios-Tabla);
-  doc.cellInitialize();
-  $.each(table,function(i,row){
-    $.each(row,function(j, cell){
-      if(j == "Sucursal Inicial"){
-        doc.cell(1,10,190,20,cell,i);
-      }
-      else{
-        doc.cell(1,10,90,20,cell,i);
-      }
-    });
-  });
-
-  doc.save('test2.pdf');
-}
-
-function tableToJson(table){
-  //first we need to be headers
-  var headers = [];
-  for( var i = 0; i <table.rows[0].cells.lenght;i++){
-    headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi,'');
-  }
-  data.push(headers);
-  for(var i = 1; i < table.rows.lenght; i++){
-    var tableRow = table.rows[i];
-    var rowData = {};
-
-    for (var j = 0 ; j<tableRow.cells.lenght; j++){
-      rowData[ headers[j] ] = tableRow.cells[j].innerHTML;
-    }
-    data.push(rowData);
-  }
-  return data;
-}
-</script>
 
 <card title="Envios">
   <div class="table-responsive">
@@ -59,7 +22,7 @@ function tableToJson(table){
       <tbody>
         <tr *ngFor="let envio of envios">
           <th scope="row">{{envio._id}}</th>
-          <td>{{envio.sucursal_ini}}</td>
+          <td >{{envio.sucursal_ini}}</td>
           <td>{{envio.sucursal_fin}}</td>
           <td>{{envio.paquete}}</td>
           <td>{{envio.usuario}}</td>
@@ -68,18 +31,19 @@ function tableToJson(table){
           <td>{{envio.conductor}}</td>
           <td>{{envio.transporte}}</td>
           <td>{{envio.fecha}}</td>
-          <input type="button" (click)="deletEnvio(envio._id)" value="Delete" class = "btn btn-danger">
+          <input type="button" (click)="deleteEnvio(envio._id)" value="Delete" class = "btn btn-danger">
         </tr>
       </tbody>
     </table>
   </div>
 </card>
+<button (click)="exportTableToCSV('envios.csv')">Descargar</button>
 
 <div class="container">
-  <h3 class = "page-header">Nuevo Envio</h3>
+  <h3 class = "page-header">Nuevo Envío</h3>
   <form (submit) = "addEnvio()">
     <div class = "form-group">
-      <label>Sucursal de envio</label>
+      <label>Sucursal de envío</label>
       <input type="text"[(ngModel)] = "sucursal_ini" name = "sucursal_ini" class = "form-control">
     </div>
     <div class = "form-group">
@@ -111,13 +75,44 @@ function tableToJson(table){
       <input type="text"[(ngModel)] = "transporte" name = "transporte" class = "form-control">
     </div>
     <div class = "form-group">
-      <label>Fecha</label>
-      <input type="date"[(ngModel)] = "fecha" name = "fecha" class = "form-control">
+      <label>Fecha mm/dd/aaaa</label>
+      <input type="text"[(ngModel)] = "fecha" name = "fecha" class = "form-control">
     </div>
     <input type="submit" class="btn btn btn-success" value = "Add">
   </form>
 </div>
-<hr>
 
-<script type="text/javascript" src="js/jquery-2.1.3.js"></script>
-<script type="text/javascript" src="js/jspdf.js"></script>
+<hr>
+<div class="row">
+    <div class="col-lg-6">
+      <card>
+        <canvas
+            baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+      </card>
+    </div>
+    <div class="col-lg-6">
+      <card>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tr>
+              <th *ngFor="let label of barChartLabels">{{label}}</th>
+            </tr>
+            <tr *ngFor="let d of barChartData">
+              <td *ngFor="let label of barChartLabels; let j=index">{{d && d.data[j]}}</td>
+            </tr>
+          </table>
+        </div>
+      </card>
+  
+      <button md-raised-button color="accent" (click)="getEnvios()">Update</button>
+    </div>
+  </div>
+
+</html>

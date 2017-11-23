@@ -15,6 +15,11 @@ export class EnvioService {
     return this.http.get('http://localhost:3000/api/envios').map(res => res.json());
   }
 
+  getEnviosf(sucursal_ini)
+  {
+    return this.http.get('http://localhost:3000/api/enviosf/'+sucursal_ini).map(res=>res.json());
+  }
+
   //add contact method
   addEnvio(newEnvio)
   {
